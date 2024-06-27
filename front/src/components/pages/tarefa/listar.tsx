@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Tarefa } from "../interfaces/Tarefa";
+import { Tarefa } from "../../../interfaces/Tarefa";
+import React from "react";
 
 function TarefaListar() {
   const [tarefas, setTarefas] = useState<Tarefa[]>([]);
@@ -41,7 +42,7 @@ function TarefaListar() {
         <tbody>
           {tarefas.map((tarefa) => (
             <tr>
-              <td>{tarefa.id}</td>
+              <td>{tarefa.tarefaId}</td>
               <td>{tarefa.titulo}</td>
               <td>{tarefa.descricao}</td>
               <td>{tarefa.categoria}</td>

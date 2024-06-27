@@ -90,17 +90,7 @@ app.MapPut("/tarefas/alterar/{id}", ([FromServices] AppDataContext ctx, [FromRou
 //GET: http://localhost:5273/tarefas/naoconcluidas
 app.MapGet("/tarefas/naoconcluidas", ([FromServices] AppDataContext ctx) =>
 {
-    // Tarefa? tarefa = ctx.Tarefas.
-    // //Implementar a listagem de tarefas não concluídas
-    // for (int i = 0; i < Tarefas.Count; i++)
-    // {
-    //     if (produtos[i].Nome == nome)
-    //     {
-    //         produtos.RemoveAt(i);
-    //         return Results.Ok("Produto removido!");
-    //     }
-    // }
-    // return Results.NotFound("Produto não encontrado!");
+   
 });
 
 //GET: http://localhost:5273/tarefas/concluidas
