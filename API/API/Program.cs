@@ -5,7 +5,18 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDataContext>();
 
+//Configurar a política de CORS para liberar o acesso total
+builder.Services.AddCors(
+    options => options.AddPolicy("Acesso Total", configs => configs
+    .AllowAnyOrigin()
+    .AllowAnyHeader()
+    .AllowAnyMethod())
+);
+
+
 var app = builder.Build();
+
+
 
 
 app.MapGet("/", () => "Prova A1");
@@ -79,18 +90,17 @@ app.MapPut("/tarefas/alterar/{id}", ([FromServices] AppDataContext ctx, [FromRou
 //GET: http://localhost:5273/tarefas/naoconcluidas
 app.MapGet("/tarefas/naoconcluidas", ([FromServices] AppDataContext ctx) =>
 {
-
-    //Implementar a listagem de tarefas não concluídas
-    Tarefa? tarefa = ctx.Tarefas.FirstOrDefault(t => t.Status == ctx.Tarefas.FirstOrDefault().Status);
-
-    if (tarefa?.Status is "Em andamento")
-    {
-        ctx.Tarefas.Add(tarefa);
-        return Results.Ok(tarefa);
-    }
-
-    return Results.NotFound("Não existem tarefas não iniciadas ou em andamento na tabela");
-
+    // Tarefa? tarefa = ctx.Tarefas.
+    // //Implementar a listagem de tarefas não concluídas
+    // for (int i = 0; i < Tarefas.Count; i++)
+    // {
+    //     if (produtos[i].Nome == nome)
+    //     {
+    //         produtos.RemoveAt(i);
+    //         return Results.Ok("Produto removido!");
+    //     }
+    // }
+    // return Results.NotFound("Produto não encontrado!");
 });
 
 //GET: http://localhost:5273/tarefas/concluidas
@@ -102,5 +112,7 @@ app.MapGet("/tarefas/concluidas", ([FromServices] AppDataContext ctx) =>
     return Results.NotFound("Não existem tarefas com status 'Concluído'");
 
 });
+
+app.UseCors("Acesso Total");
 
 app.Run();

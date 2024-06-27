@@ -12,7 +12,7 @@ Content-Type: application/json
 }
 
 ### Alterar status de uma tarefa
-PUT http://localhost:5000/tarefas/alterar/6a8b3e4d-5e4e-4f7e-bdc9-9181e456ad0e
+PUT http://localhost:5000/tarefas/alterar/{id}
 
 ### Listar tarefas com status de “Não iniciada” e “Em andamento”
 GET http://localhost:5000/tarefas/naoconcluidas
