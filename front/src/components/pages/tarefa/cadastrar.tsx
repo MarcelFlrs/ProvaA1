@@ -11,10 +11,10 @@ function TarefaCadastrar() {
   function cadastrar(e: any) {
     e.preventDefault();
     const tarefa: Tarefa = {
-      titulo: titulo,
-      descricao: descricao,
-      categoria: categoria,
-      status: status,
+        titulo: titulo,
+        descricao: descricao,
+        categoria: categoria,
+        status: "Não iniciada"
     };
     
     fetch("http://localhost:5000/tarefas/cadastrar", {
@@ -51,12 +51,6 @@ function TarefaCadastrar() {
         <input
           type="text"
           onChange={(e: any) => setCategoria(e.target.value)}
-        />{" "}
-        <br />
-        <label>Status:</label>
-        <input
-          type="text"
-          onChange={(e: any) => setStatus(e.target.value)}
         />{" "}
         <br />
         <button type="submit">Cadastrar</button>
